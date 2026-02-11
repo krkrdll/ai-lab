@@ -1,0 +1,28 @@
+{
+  "name": "ai-lab",
+	"image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+	"features": {
+		"ghcr.io/devcontainers/features/node:1": {
+			"version": "v24"
+		}
+	},
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+  "workspaceFolder": "/workspace",
+  "runArgs": [
+    "--name",
+    "${localWorkspaceFolderBasename}"
+  ],
+  "containerEnv": {
+    "TZ": "Asia/Tokyo"
+  },
+  "postStartCommand": "npm ci && npm run dev",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "eamodio.gitlens",
+        "mhutchie.git-graph"
+      ],
+      "settings": {}
+    }
+  }
+}
