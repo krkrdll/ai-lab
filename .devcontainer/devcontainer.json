@@ -15,12 +15,12 @@
   "containerEnv": {
     "TZ": "Asia/Tokyo"
   },
-  "postStartCommand": "npm ci && npm run dev",
   "customizations": {
     "vscode": {
       "extensions": [
         "eamodio.gitlens",
-        "mhutchie.git-graph"
+        "mhutchie.git-graph",
+        "biomejs.biome"
       ],
       "settings": {}
     }
