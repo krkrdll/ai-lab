@@ -20,7 +20,8 @@
       "extensions": [
         "eamodio.gitlens",
         "mhutchie.git-graph",
-        "biomejs.biome"
+        "biomejs.biome",
+        "bradlc.vscode-tailwindcss"
       ],
       "settings": {}
     }
