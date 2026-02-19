@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ブラウザ オセロゲーム</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-gray-100 font-['Inter'] min-h-screen flex flex-col items-center justify-center p-4">
+
+    <div class="max-w-4xl w-full bg-white rounded-xl shadow-2xl overflow-hidden p-6 md:p-8 flex flex-col md:flex-row gap-8">
+        
+        <!-- ゲームボードエリア -->
+        <div class="flex-1 flex flex-col items-center justify-center">
+            <div id="board" class="bg-green-700 p-2 rounded-md shadow-inner grid grid-cols-8 gap-1 border-4 border-gray-800 select-none relative">
+                <!-- マス目はJSで生成されます -->
+            </div>
+        </div>
+
+        <!-- コントロールパネル -->
+        <div class="md:w-64 flex flex-col gap-6">
+            <h1 class="text-3xl font-bold text-gray-800 text-center md:text-left">Othello</h1>
+            
+            <!-- スコアボード -->
+            <div class="bg-gray-50 rounded-lg p-4 shadow-sm border border-gray-200">
+                <div class="flex justify-between items-center mb-4">
+                    <div id="turn-indicator" class="text-lg font-bold flex items-center gap-2">
+                        <span id="current-player-icon" class="w-4 h-4 rounded-full bg-black inline-block border border-gray-400"></span>
+                        <span id="current-player-text">黒の番</span>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between text-center gap-2">
+                    <div class="flex-1 bg-gray-800 text-white rounded p-2 flex flex-col items-center transition-all duration-300" id="score-box-black">
+                        <span class="text-xs uppercase opacity-70">Black</span>
+                        <span id="score-black" class="text-2xl font-bold">2</span>
+                    </div>
+                    <div class="flex-1 bg-white text-gray-800 border border-gray-300 rounded p-2 flex flex-col items-center transition-all duration-300" id="score-box-white">
+                        <span class="text-xs uppercase opacity-70">White</span>
+                        <span id="score-white" class="text-2xl font-bold">2</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ゲームステータス・メッセージ -->
+            <div id="message-area" class="text-center min-h-[1.5rem] text-red-500 font-bold hidden"></div>
+
+            <!-- 操作ボタン -->
+            <div class="mt-auto flex flex-col gap-3">
+                <button id="reset-btn" class="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow transition duration-200 flex items-center justify-center gap-2">
+                    <i class="fas fa-rotate-right"></i> リセット
+                </button>
+                
+                <div class="flex gap-2">
+                    <label class="flex items-center gap-2 text-sm text-gray-600 cursor-pointer">
+                        <input type="checkbox" id="show-hints" class="rounded text-blue-600 focus:ring-blue-500" checked>
+                        <span>ヒントを表示</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="text-xs text-gray-400 text-center mt-4">
+                Classic Othello Game
+            </div>
+        </div>
+    </div>
+
+    <!-- 勝敗モーダル -->
+    <div id="game-over-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-white rounded-lg p-8 max-w-sm w-full text-center shadow-2xl transform scale-95 transition-transform duration-300" id="modal-content">
+            <h2 class="text-2xl font-bold mb-2">ゲーム終了!</h2>
+            <p id="winner-text" class="text-xl mb-6 text-gray-700">黒の勝ち!</p>
+            
+            <div class="flex justify-center gap-4 mb-6">
+                <div class="text-center">
+                    <div class="w-10 h-10 bg-black rounded-full mx-auto mb-1 border border-gray-300"></div>
+                    <span id="final-score-black" class="font-bold text-xl">0</span>
+                </div>
+                <div class="text-center">
+                    <div class="w-10 h-10 bg-white rounded-full mx-auto mb-1 border border-gray-300"></div>
+                    <span id="final-score-white" class="font-bold text-xl">0</span>
+                </div>
+            </div>
+
+            <button id="modal-restart-btn" class="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow transition duration-200">
+                もう一度遊ぶ
+            </button>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

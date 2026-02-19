@@ -1,0 +1,93 @@
+/* ゲームボードとセルの基本スタイル */
+#board {
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 1 / 1;
+}
+
+.cell {
+    background-color: #2e7d32; /* クラシックなオセロ緑 */
+    position: relative;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+/* マスのホバー効果（石が置ける場合のみJSでクラス付与したりするが、基本のhoverも少し入れる） */
+.cell:hover {
+    background-color: #388e3c;
+}
+
+/* 石（ディスク）のスタイル */
+.disc {
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    transition: transform 0.4s ease-in-out, background-color 0.4s;
+    transform-style: preserve-3d;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+}
+
+.disc.black {
+    background: radial-gradient(circle at 30% 30%, #444, #000);
+}
+
+.disc.white {
+    background: radial-gradient(circle at 30% 30%, #fff, #ddd);
+}
+
+/* 石の反転アニメーション用のクラス */
+/* 注: 実際の反転は色を変えることで表現するが、フリップアニメーションを入れるとよりリッチになる */
+/* 今回はシンプルに、反転時に一度縮小して拡大するようなアニメーション、またはY軸回転を使う */
+
+/* ヒント（置ける場所のマーカー） */
+.hint {
+    width: 30%;
+    height: 30%;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 35%;
+    left: 35%;
+    pointer-events: none; /* クリックを下のcellに通す */
+    transition: all 0.2s;
+}
+
+.cell:hover .hint {
+    background-color: rgba(0, 0, 0, 0.5);
+    transform: scale(1.2);
+}
+
+/* 最後の手にマークをつける */
+.last-move::after {
+    content: '';
+    position: absolute;
+    width: 20%;
+    height: 20%;
+    background-color: #ef4444; /* 赤い点 */
+    border-radius: 50%;
+    top: 40%;
+    left: 40%;
+    z-index: 10;
+}
+
+/* 勝利時のモーダル表示アニメーション */
+#game-over-modal.show {
+    display: flex;
+    opacity: 1;
+}
+
+#game-over-modal.show #modal-content {
+    transform: scale(1);
+}
+
+/* レスポンシブ対応の微調整 */
+@media (max-width: 640px) {
+    #board {
+        border-width: 2px;
+        padding: 4px;
+        gap: 2px;
+    }
+}
