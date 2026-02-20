@@ -29,6 +29,7 @@ export default function Sidebar() {
 
         <h2>Games</h2>
 
+        <NavItem href="/quick-calc">計算ゲーム</NavItem>
         <NavItem href="/block-breaker">ブロック崩し</NavItem>
         <NavItem href="/mosquito">蚊を撃退するゲーム</NavItem>
         <NavItem href="/flash-sequence">フラッシュシーケンス</NavItem>
