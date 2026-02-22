@@ -34,6 +34,10 @@ export default function Sidebar() {
         <NavItem href="/mosquito">蚊を撃退するゲーム</NavItem>
         <NavItem href="/flash-sequence">フラッシュシーケンス</NavItem>
         <NavItem href="/othello">オセロ</NavItem>
+
+        <h2>Others</h2>
+
+        <NavItem href="/floating-objects">浮遊するオブジェクト</NavItem>
       </nav>
     </aside>
   );
