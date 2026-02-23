@@ -11,6 +11,11 @@ type Notice = {
 
 const notices: Notice[] = [
   {
+    date: "2026-02-23",
+    content: "「Sound Generator」を追加",
+    link: "/sound-generator",
+  },
+  {
     date: "2026-02-22",
     content: "「浮遊するオブジェクト」を追加",
     link: "/floating-objects",
@@ -29,7 +34,7 @@ export default function Page() {
       <h2>お知らせ</h2>
       <ul>
         {notices.map((notice) => (
-          <li key={`${notice.date}-${notice.content}`}>
+          <li key={`${notice.date}-${notice.content}`} className="mb-4">
             {notice.date}: {notice.content}
             {notice.link && (
               <Link
