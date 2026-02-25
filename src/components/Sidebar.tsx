@@ -25,6 +25,7 @@ export default function Sidebar() {
 
         <h2>Applications</h2>
 
+        <NavItem href="/chat-logger">Chat Logger</NavItem>
         <NavItem href="/sound-generator">Sound Generator</NavItem>
         <NavItem href="/password-generator">Password Generator</NavItem>
 

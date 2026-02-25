@@ -11,6 +11,11 @@ type Notice = {
 
 const notices: Notice[] = [
   {
+    date: "2026-02-25",
+    content: "「Chat Logger」を追加",
+    link: "/chat-logger",
+  },
+  {
     date: "2026-02-23",
     content: "「Sound Generator」を追加",
     link: "/sound-generator",
